@@ -1,4 +1,3 @@
-/* --- Global Styles & Variables --- */
 :root {
     --bg-color: #1a1a1a;
     --bg-color-light: #2c2c2c;
@@ -9,6 +8,7 @@
     --accent-purple: #6A0DAD;
     --accent-purple-hover: #8A2BE2;
     --border-color: #444;
+    --header-height: 5rem;
 }
 
 * {
@@ -27,7 +27,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     font-size: 16px;
-    padding-bottom: 0rem;
+    padding-top: var(--header-height);
 }
 
 h1, h2, h3 {
@@ -45,10 +45,36 @@ h2 {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    display: inline-block;
+    padding-bottom: 0;
+    text-align: center;
+    display: block;
+    border-bottom: none;
+    position: relative;
 }
+.meteorite-icon-name {
+    width: 40px;
+    height: 40px;
+    margin: 0 0.25rem;
+    flex-shrink: 1;
+}
+
+#about h2::after,
+#skills h2::after,
+#projects h2::after,
+footer h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.5rem auto 0;
+    background-color: var(--accent-red);
+}
+
+#skills h2::after,
+footer h2::after {
+    background-color: var(--accent-purple);
+}
+
 
 h3 {
     font-size: 1.5rem;
@@ -73,54 +99,18 @@ a:hover {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-i { /* Icon styling */
+i {
     margin-right: 0.5rem;
+    vertical-align: middle;
 }
 
-/* --- Layout & Utility --- */
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-/* --- Navigation --- */
-nav {
-    background-color: var(--bg-color-light);
-    padding: 1rem 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--border-color); 
-}
-
-.nav-name {
-    color: var(--heading-color);
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    padding-bottom: 0.2rem;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-    border-bottom: 2px solid transparent;
-}
-
-.nav-links a:hover {
-    color: var(--accent-red);
-    border-bottom: 2px solid var(--accent-red); 
 }
 
 section {
@@ -139,50 +129,39 @@ section {
     color: var(--accent-purple);
 }
 
-
-/* --- Header --- */
-header {
-    padding: 0;
-}
-
-
-/* --- Meteoriten-Icon --- */
-.meteorite-icon {
-       
-    width: 20px; 
-    height: 20px;
-
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
-
-    margin: 0 1px;
-}
-
-/* --- Navigation --- */
 nav {
     background-color: var(--bg-color-light);
-    padding: 1rem 20px; 
+    padding: 0 20px;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    position: sticky; 
-    top: 0;          
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 100;
     border-bottom: 1px solid var(--border-color);
+    height: var(--header-height);
 }
 
 .nav-name {
-    
+    color: var(--heading-color);
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--heading-color);
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin-left: 6rem;
 }
 
+.meteorite-icon {
+    width: 20px;
+    height: 20px;
+    margin: 0 0.25rem;
+    flex-shrink: 0;
+}
+
 .nav-links {
-    display: flex; 
+    display: flex;
     gap: 1.5rem;
     margin-right: 6rem;
 }
@@ -193,6 +172,7 @@ nav {
     padding-bottom: 0.2rem;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     border-bottom: 2px solid transparent;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -200,66 +180,8 @@ nav {
     border-bottom: 2px solid var(--accent-red);
 }
 
-/* --- Footer --- */
-footer {
-    padding: 6rem 20px 4rem 20px; 
-    margin-top: 0;
-    background-color: var(--bg-color-light);
-    border-top: 1px solid var(--border-color);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    text-align: center;
-    
-}
-
-footer .container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-footer h2 {
-    font-size: 2rem;
-    border-bottom: none;
-    margin-bottom: 1rem;
-}
-
-footer p {
-    max-width: 600px;
-    margin: 0 auto 1.5rem auto;
-    color: var(--text-color);
-}
-
-footer .btn {
-    display: inline-block;
-    margin-bottom: 2.5rem;
-}
-
-footer .social-links {
-    margin-bottom: 2rem;
-}
-
-footer .social-links a {
-    color: var(--text-color);
-    font-size: 1.8rem;
-    margin: 0 1rem;
-    transition: color 0.3s ease;
-}
-
-footer .social-links a:hover {
-    color: var(--accent-red);
-}
-
-footer p.copyright {
-    margin-top: 2rem;
-    margin-bottom: 0;
-    font-size: 0.9rem;
-    color: #aaa;
-    max-width: none;
-}
-/* --- Hero Section --- */
 #hero {
     padding: 6rem 0;
-    background-color: var(--bg-color);
 }
 
 #hero h1 {
@@ -269,7 +191,6 @@ footer p.copyright {
 #hero h2 {
     font-size: 1.8rem;
     color: var(--text-color);
-    border-bottom: none;
     margin-bottom: 1rem;
     font-weight: 400;
     text-align: center;
@@ -285,7 +206,6 @@ footer p.copyright {
     background-color: var(--accent-red);
     position: relative;
     left: -15px;
-
 }
 
 
@@ -307,27 +227,6 @@ footer p.copyright {
     color: var(--accent-red);
 }
 
-.contact-social {
-    margin-top: 2rem;
-}
-
-
-/* --- About Section --- */
-#about h2 {
-    text-align: center;
-    display: block; 
-    border-bottom: none; 
-    margin-bottom: 2rem;
-}
-#about h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-red);
-    margin: 0.5rem auto 0;
-}
-
 #about p {
     max-width: 800px;
     margin-left: auto;
@@ -335,16 +234,15 @@ footer p.copyright {
     text-align: center;
 }
 
-/* --- Skills Section --- */
+#skills {
+     margin-bottom: 2rem;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
-}
-
-#skills {
-    margin-bottom: 2rem;
 }
 
 .skill-item {
@@ -363,16 +261,15 @@ footer p.copyright {
 .skill-item a {
     text-decoration: none;
     color: inherit;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
     border-radius: 5px;
 }
 
 .skill-item a:hover {
     color: var(--accent-purple);
-    transform: none;
 }
 
 .skill-item a i {
@@ -380,57 +277,13 @@ footer p.copyright {
     font-size: 2rem;
     margin-bottom: 0.5rem;
     color: inherit;
+    margin-right: 0;
 }
 
 .skill-item a img {
     width: 2.5rem;
     height: auto;
     margin-bottom: 0.5rem;
-    display: block;
-}
-
-/* --- Projects Section --- */
-
-/* Wortwechsel */
-.animated-word-container {
-    display: inline-block;
-    position: relative;
-    vertical-align: -5px;
-    line-height: 1;
-    overflow: hidden;
-    transition: width 0.5s ease-in-out;
-    padding: 0 1px;
-    box-sizing: content-box;
-}
-
-.word-item {
-    display: inline-block;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transform: translateY(0);
-    opacity: 1;
-    white-space: nowrap;
-}
-
-/* Klassen für die Animationen */
-.slide-out-up {
-    transform: translateY(-110%); 
-    opacity: 0;
-}
-.slide-out-down {
-    transform: translateY(110%); 
-    opacity: 0;
-}
-.slide-in-up-start {
-    transform: translateY(110%);
-    opacity: 0;
-}
-.slide-in-down-start {
-    transform: translateY(-110%);
-    opacity: 0;
-}
-
-.animated-word-container.accent-red .word-item {
-    color: red;
 }
 
 #projects {
@@ -472,11 +325,46 @@ footer p.copyright {
 .project-links {
     margin-top: auto;
     display: flex;
-    gap: 1rem; 
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
-/* --- Buttons --- */
+.animated-word-container {
+    display: inline-block;
+    position: relative;
+    vertical-align: -3px;
+    line-height: 1;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out;
+    padding: 0 1px;
+    box-sizing: content-box;
+}
+
+.word-item {
+    display: inline-block;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+    white-space: nowrap;
+}
+
+.slide-out-up {
+    transform: translateY(-110%);
+    opacity: 0;
+}
+.slide-out-down {
+    transform: translateY(110%);
+    opacity: 0;
+}
+.slide-in-up-start {
+    transform: translateY(110%);
+    opacity: 0;
+}
+.slide-in-down-start {
+    transform: translateY(-110%);
+    opacity: 0;
+}
+
 .btn {
     display: inline-block;
     padding: 0.7rem 1.5rem;
@@ -513,122 +401,110 @@ footer p.copyright {
     color: #fff;
 }
 
-
-
-/* --- Footer --- */
-
 footer {
     padding: 6rem 20px 4rem 20px;
-    margin-top: 0;     
+    margin-top: 0;
     background-color: var(--bg-color-light);
     border-top: 1px solid var(--border-color);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     text-align: center;
-    
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
 footer h2 {
-   
-    font-size: 2rem; 
-    border-bottom: none;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
+
 footer p {
-    
     max-width: 600px;
     margin: 0 auto 1.5rem auto;
     color: var(--text-color);
 }
 
 footer .btn {
-    
-    display: inline-block; 
-    margin-bottom: 2.5rem; 
+    display: inline-block;
+    margin-bottom: 2.5rem;
 }
 
-footer .social-links { 
-    margin-bottom: 2rem; 
-    
+.footer-social {
+    margin-bottom: 2rem;
 }
 
-footer .social-links a {
-    
+.footer-social a {
     color: var(--text-color);
-    font-size: 1.8rem; 
-    margin: 0 1rem;    
+    font-size: 1.8rem;
+    margin: 0 1rem;
     transition: color 0.3s ease;
 }
 
-footer .social-links a:hover {
+.footer-social a:hover {
     color: var(--accent-red);
 }
 
-footer p.copyright {
-    
+
+footer p.creds {
     margin-top: 2rem;
     margin-bottom: 0;
     font-size: 0.9rem;
-    color: #aaa;     
+    color: #aaa;
     max-width: none;
 }
 
-h2 {
-    text-align: center;
-    display: block; 
-    border-bottom: none;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--heading-color);
-    margin-bottom: 2rem;
-    padding-bottom: 0;
-    line-height: 1.2;
-}
-
-
-#about h2, #skills h2, #projects h2 {
-    border-bottom: none;
-}
-footer h2 { 
-    border: none;
-    margin-bottom: 1rem;
-}
-
-
-
-#about h2::after,
-#skills h2::after,
-#projects h2::after,
-footer h2::after { 
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    margin: 0.5rem auto 0;
-    background-color: var(--accent-red);
-}
-
-/* --- Überschreibe Farbe für Lila Überschriften --- */
-#skills h2::after,
-footer h2::after {
-    background-color: var(--accent-purple);
-}
-
-/* --- Responsiveness --- */
 @media (max-width: 768px) {
+    :root {
+        --header-height: 6rem;
+    }
+    nav {
+        flex-direction: column;
+        height: auto;
+        min-height: var(--header-height);
+        padding: 0.5rem 1rem;
+        align-items: center;
+    }
+
+    .nav-name {
+        margin-left: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .nav-links {
+        margin-right: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem 1rem;
+        width: 100%;
+    }
+     .nav-links a {
+        padding: 0.3rem 0.8rem;
+        border-bottom: 2px solid transparent;
+        flex-grow: 1;
+        text-align: center;
+        max-width: calc(50% - 0.5rem);
+    }
+     .nav-links a:hover {
+        border-bottom-color: var(--accent-red);
+    }
+
     h1 {
         font-size: 2.5rem;
     }
     h2 {
         font-size: 1.8rem;
     }
+    #hero h2 {
+         font-size: 1.8rem;
+    }
     #hero {
         padding: 4rem 0;
     }
+
     .skills-grid {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 1rem;
@@ -640,18 +516,35 @@ footer h2::after {
     .project-links {
         justify-content: center;
     }
+    footer {
+        padding: 4rem 15px 3rem 15px;
+    }
 }
 
 @media (max-width: 480px) {
+
     body {
         font-size: 15px;
     }
     h1 {
         font-size: 2rem;
     }
-    #hero h2 {
+     #hero h2 {
         font-size: 1.5rem;
     }
+    .nav-name {
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        gap: 0.3rem 0.5rem;
+    }
+     .nav-links a {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.9rem;
+        max-width: calc(50% - 0.25rem);
+    }
+
     .social-links a {
         font-size: 1.5rem;
         margin: 0 0.5rem;
@@ -662,5 +555,14 @@ footer h2::after {
     }
      section {
         padding: 3rem 0;
+    }
+    footer {
+         padding: 3rem 10px 2rem 10px;
+    }
+    footer h2 {
+        font-size: 1.6rem;
+    }
+    .footer-social a {
+        font-size: 1.6rem;
     }
 }
