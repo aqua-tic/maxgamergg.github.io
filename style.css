@@ -51,13 +51,8 @@ h2 {
     border-bottom: none;
     position: relative;
 }
-.meteorite-icon-name {
-    width: 40px;
-    height: 40px;
-    margin: 0 0.25rem;
-    flex-shrink: 1;
-}
 
+#hero h2::after,
 #about h2::after,
 #skills h2::after,
 #projects h2::after,
@@ -188,21 +183,8 @@ nav {
     margin-bottom: 0.5rem;
 }
 
-#hero h2 {
-    font-size: 1.8rem;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-    font-weight: 400;
-    text-align: center;
-    display: block;
-}
 
 #hero h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    margin: 0.5rem auto 1.5rem auto;
     background-color: var(--accent-red);
     position: relative;
     left: -15px;
@@ -338,6 +320,7 @@ nav {
     transition: width 0.5s ease-in-out;
     padding: 0 1px;
     box-sizing: content-box;
+    top: 4px;
 }
 
 .word-item {
